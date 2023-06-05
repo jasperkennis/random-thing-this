@@ -1,3 +1,61 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "eslint:recommended",
+    "next",
+    "airbnb-typescript",
+    "prettier"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "parserOptions": {
+        "project": [
+          "./tsconfig.eslint.json"
+        ]
+      }
+    }
+  ],
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "object-shorthand": "error",
+    "no-underscore-dangle": "off",
+    "valid-jsdoc": [
+      "error",
+      {
+        "requireReturnType": true,
+        "requireParamDescription": true,
+        "requireReturnDescription": true,
+        "requireParamType": true,
+        "requireReturn": true
+      }
+    ],
+    "require-jsdoc": [
+      "error",
+      {
+        "require": {
+          "FunctionDeclaration": true,
+          "MethodDefinition": true,
+          "ClassDeclaration": true,
+          "ArrowFunctionExpression": false,
+          "FunctionExpression": false
+        }
+      }
+    ],
+    "max-max-classes-per-file": "off",
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0
+      }
+    ]
+  }
 }
