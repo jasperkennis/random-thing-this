@@ -8,6 +8,7 @@ const EpisodeNavigation = () => (
       gridColumnEnd: 2,
       gridRowStart: 2,
       gridRowEnd: 3,
+      position: 'relative',
     }}>
     nav
   </Box>

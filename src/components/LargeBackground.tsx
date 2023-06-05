@@ -1,15 +1,23 @@
+import Image from 'next/image'
 import { Box } from 'theme-ui'
 
 const LargeBackground = () => (
   <Box
     as='section'
     sx={{
-      background: 'red',
       gridColumnStart: 1,
       gridColumnEnd: 2,
       gridRowStart: 1,
       gridRowEnd: 3,
-    }}></Box>
+      position: 'relative',
+    }}>
+    <Image
+      src={'/6knKgEZVPoDTOMDuqPIA5qsAGz4.jpg'}
+      alt={'Actress looking into camera with neutral expression.'}
+      fill={true}
+      style={{ objectFit: 'cover' }}
+    />
+  </Box>
 )
 
 export default LargeBackground

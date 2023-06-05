@@ -8,6 +8,7 @@ const SeasonDescription = () => (
       gridColumnEnd: 2,
       gridRowStart: 1,
       gridRowEnd: 2,
+      position: 'relative',
     }}>
     <Paragraph>Season 1</Paragraph>
     <Heading>Insecure</Heading>
