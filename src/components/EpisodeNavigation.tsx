@@ -1,7 +1,7 @@
 import { Box, Flex } from 'theme-ui'
 import EpisodeThumbnail from './EpisodeThumbnail'
 
-const EpisodeNavigation = () => (
+const EpisodeNavigation = ({ seasonInfo }: SeasonInfoProps) => (
   <Box
     as='section'
     sx={{
@@ -17,11 +17,9 @@ const EpisodeNavigation = () => (
         gap: 20,
         overflowX: 'scroll',
       }}>
-      <EpisodeThumbnail />
-      <EpisodeThumbnail />
-      <EpisodeThumbnail />
-      <EpisodeThumbnail />
-      <EpisodeThumbnail />
+      {seasonInfo.episodes.map((episode, i) => (
+        <EpisodeThumbnail episode={episode} i={i + 1} key={i} />
+      ))}
     </Flex>
   </Box>
 )

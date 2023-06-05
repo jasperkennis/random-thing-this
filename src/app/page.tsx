@@ -6,14 +6,17 @@ import EpisodeNavigation from '@/components/EpisodeNavigation'
 import LargeBackground from '@/components/LargeBackground'
 import SeasonDescription from '@/components/SeasonDescription'
 import { theme } from '@/config/theme'
-import getSeriesDetails from '@/util/get-series-details'
-import { useEffect } from 'react'
-import { Grid, ThemeProvider } from 'theme-ui'
+import getSeasonInfo from '@/util/get-season-info'
+import { useEffect, useState } from 'react'
+import { Grid, Paragraph, ThemeProvider } from 'theme-ui'
 
 const Home = () => {
+  const [seasonInfo, setSeasonInfo] = useState<undefined | SeasonInfo>(
+    undefined,
+  )
   useEffect(() => {
-    getSeriesDetails(process.env.NEXT_PUBLIC_OMDB_API_KEY as string).then(
-      (seriesDetails) => console.log(seriesDetails),
+    getSeasonInfo(process.env.NEXT_PUBLIC_OMDB_API_KEY as string).then(
+      (receivedSeasonInfo) => setSeasonInfo(receivedSeasonInfo),
     )
   }, [])
 
@@ -32,12 +35,18 @@ const Home = () => {
          * description and the episode nav, which use the rows to align nicely
          * with the episode main image and details.
          */}
-        <LargeBackground />
-        <SeasonDescription />
-        <EpisodeNavigation />
+        {seasonInfo && (
+          <>
+            <LargeBackground seasonInfo={seasonInfo} />
+            <SeasonDescription />
+            <EpisodeNavigation seasonInfo={seasonInfo} />
 
-        <EpisodeMainImage />
-        <EpisodeDetails />
+            <EpisodeMainImage />
+            <EpisodeDetails />
+          </>
+        )}
+
+        {!seasonInfo && <Paragraph>Loading</Paragraph>}
       </Grid>
     </ThemeProvider>
   )

@@ -3,7 +3,7 @@
  * a cheat because usually we would have to fetch the series details first,
  * which contains the id used in the episodes request.
  */
-const getSeriesDetails = async (apiKey: string): Promise<SeasonInfo> => {
+const getSeasonInfo = async (apiKey: string): Promise<SeasonInfo> => {
   const [seriesDetailsResponse, episodesResponse] = await Promise.all([
     fetch(
       `http://www.omdbapi.com/?apikey=${apiKey}&plot=short&i=tt5038246`,
@@ -26,4 +26,4 @@ const getSeriesDetails = async (apiKey: string): Promise<SeasonInfo> => {
   return {...seriesDetails, episodes}
 }
 
-export default getSeriesDetails
+export default getSeasonInfo

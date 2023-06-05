@@ -1,7 +1,12 @@
 import Image from 'next/image'
 import { Box, Flex, Paragraph } from 'theme-ui'
 
-const EpisodeThumbnail = () => (
+interface EpisodeThumbnailProps {
+  episode: MediaDetails
+  i: number
+}
+
+const EpisodeThumbnail = ({ episode, i }: EpisodeThumbnailProps) => (
   <Flex sx={{ flexDirection: 'column', flexShrink: 0, width: 201 }}>
     <Box
       sx={{
@@ -10,7 +15,7 @@ const EpisodeThumbnail = () => (
         width: 201,
       }}>
       <Image
-        src={'/issa-rae.webp'}
+        src={episode.Poster}
         alt={'Actress looking away, slightly annoyed.'}
         fill={true}
         style={{ objectFit: 'cover' }}
@@ -22,14 +27,11 @@ const EpisodeThumbnail = () => (
           position: 'absolute',
           width: 30,
         }}>
-        1
+        {i}
       </Box>
     </Box>
 
-    <Paragraph sx={{ color: 'background' }}>
-      In the wake of her 29th birthday, Issa reflects on her life and
-      relationship choices.
-    </Paragraph>
+    <Paragraph sx={{ color: 'background' }}>{episode.Plot}</Paragraph>
   </Flex>
 )
 
