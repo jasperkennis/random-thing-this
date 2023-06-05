@@ -6,30 +6,15 @@ import EpisodeNavigation from '@/components/EpisodeNavigation'
 import LargeBackground from '@/components/LargeBackground'
 import SeasonDescription from '@/components/SeasonDescription'
 import { theme } from '@/config/theme'
+import getSeriesDetails from '@/util/get-series-details'
 import { useEffect } from 'react'
 import { Grid, ThemeProvider } from 'theme-ui'
 
 const Home = () => {
   useEffect(() => {
-    /**
-     * Fetching the details and the episodes at the same time. This is a bit of
-     * a cheat because usually we would have to fetch the series details first,
-     * which contains the id used in the episodes request.
-     */
-    Promise.all([
-      fetch(
-        `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_OMDB_API_KEY}&plot=short&i=$tt5038246`,
-      ),
-      fetch(
-        `http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_OMDB_API_KEY}&type=series&plot=short&i=tt5024912&Season=1`,
-      ),
-    ])
-      .then(([seriesDetailsResponse, episodesResponse]) =>
-        Promise.all([seriesDetailsResponse.json(), episodesResponse.json()]),
-      )
-      .then(([seriesDetails, episodes]: [object, object]) =>
-        console.log(seriesDetails, episodes),
-      )
+    getSeriesDetails(process.env.NEXT_PUBLIC_OMDB_API_KEY as string).then(
+      (seriesDetails) => console.log(seriesDetails),
+    )
   }, [])
 
   return (
