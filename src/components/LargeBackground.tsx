@@ -17,6 +17,15 @@ const LargeBackground = () => (
       fill={true}
       style={{ objectFit: 'cover' }}
     />
+    <Box
+      sx={{
+        backgroundImage:
+          'linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,1))',
+        height: '100%',
+        width: '100%',
+        position: 'relative',
+      }}
+    />
   </Box>
 )
 
