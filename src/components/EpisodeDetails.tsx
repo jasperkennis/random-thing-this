@@ -1,5 +1,6 @@
 import { Box, Heading, Paragraph } from 'theme-ui'
 import EpisodeMeta from './EpisodeMeta'
+import EpisodeDescription from './EpisodeDescription'
 
 const EpisodeDetails = () => (
   <Box
@@ -13,7 +14,7 @@ const EpisodeDetails = () => (
       overflowY: 'scroll',
     }}>
     <EpisodeMeta />
-    <EpisodeDetails />
+    <EpisodeDescription />
   </Box>
 )
 

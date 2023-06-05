@@ -1,4 +1,5 @@
-import { Box } from 'theme-ui'
+import { Box, Flex } from 'theme-ui'
+import EpisodeThumbnail from './EpisodeThumbnail'
 
 const EpisodeNavigation = () => (
   <Box
@@ -10,7 +11,18 @@ const EpisodeNavigation = () => (
       gridRowEnd: 3,
       position: 'relative',
     }}>
-    nav
+    <Flex
+      sx={{
+        flexDirection: 'row',
+        gap: 20,
+        overflowX: 'scroll',
+      }}>
+      <EpisodeThumbnail />
+      <EpisodeThumbnail />
+      <EpisodeThumbnail />
+      <EpisodeThumbnail />
+      <EpisodeThumbnail />
+    </Flex>
   </Box>
 )
 
