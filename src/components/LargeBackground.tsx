@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Box } from 'theme-ui'
 
-const LargeBackground = () => (
+const LargeBackground = ({ seasonInfo }: SeasonInfoProps) => (
   <Box
     as='section'
     sx={{
@@ -12,7 +12,7 @@ const LargeBackground = () => (
       position: 'relative',
     }}>
     <Image
-      src={'/6knKgEZVPoDTOMDuqPIA5qsAGz4.jpg'}
+      src={seasonInfo.Poster}
       alt={'Actress looking into camera with neutral expression.'}
       fill={true}
       style={{ objectFit: 'cover' }}
